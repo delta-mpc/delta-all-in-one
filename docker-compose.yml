@@ -24,7 +24,7 @@ services:
     container_name: node1-data
     volumes: 
       - "./node1:/app/"
-    command: "mnist"
+    command: "get-mnist"
     depends_on: 
       - node1-init
   node1:
@@ -47,7 +47,7 @@ services:
     container_name: node2-data
     volumes: 
       - "./node2:/app/"
-    command: "mnist"
+    command: "get-mnist"
     depends_on: 
       - node2-init
   node2:
@@ -73,5 +73,3 @@ services:
     depends_on: 
       - dashboard-init
       - node1
-  
-  
