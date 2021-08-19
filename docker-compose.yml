@@ -5,26 +5,26 @@ services:
     image: deltampc/delta-chain-connector:dev
     container_name: connector-init
     volumes: 
-      - "./connector:/app/"
+      - "./chain-connector:/app/"
     command: "init"
   connector:
     image: deltampc/delta-chain-connector:dev
     container_name: connector
     volumes: 
-      - "./connector:/app/"
+      - "./chain-connector:/app/"
     command: "run"
 
   node1-init:
     image: deltampc/delta-node:dev
     container_name: node1-init
     volumes: 
-      - "./node1:/app/"
+      - "./delta-node1:/app/"
     command: "init"
   node1-data:
     image: deltampc/delta-node:dev
     container_name: node1-data
     volumes: 
-      - "./node1:/app/"
+      - "./delta-node1:/app/"
     command: "get-mnist"
     depends_on: 
       - node1-init
@@ -32,7 +32,7 @@ services:
     image: deltampc/delta-node:dev
     container_name: node1
     volumes: 
-      - "./node1:/app/"
+      - "./delta-node1:/app/"
     depends_on: 
       - node1-data
       - connector
@@ -41,13 +41,13 @@ services:
     image: deltampc/delta-node:dev
     container_name: node2-init
     volumes: 
-      - "./node2:/app/"
+      - "./delta-node2:/app/"
     command: "init"
   node2-data:
     image: deltampc/delta-node:dev
     container_name: node2-data
     volumes: 
-      - "./node2:/app/"
+      - "./delta-node2:/app/"
     command: "get-mnist"
     depends_on: 
       - node2-init
@@ -55,7 +55,7 @@ services:
     image: deltampc/delta-node:dev
     container_name: node2
     volumes: 
-      - "./node2:/app/"
+      - "./delta-node2:/app/"
     depends_on: 
       - node2-data
       - connector
@@ -64,13 +64,13 @@ services:
     image: deltampc/deltaboard:dev
     container_name: dashboard-init
     volumes: 
-      - "./dashboard:/app/"
+      - "./deltaboard:/app/"
     command: "init"
   dashboard:
     image: deltampc/deltaboard:dev
     container_name: dashboard
     volumes: 
-      - "./dashboard:/app/"
+      - "./deltaboard:/app/"
     depends_on: 
       - dashboard-init
       - node1
