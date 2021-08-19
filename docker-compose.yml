@@ -12,6 +12,7 @@ services:
     container_name: connector
     volumes: 
       - "./connector:/app/"
+    command: "run"
 
   node1-init:
     image: deltampc/delta-node:dev
