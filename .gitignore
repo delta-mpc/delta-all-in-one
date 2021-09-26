@@ -1,0 +1,6 @@
+.idea/
+no-blockchain/**/config/
+no-blockchain/**/db/
+no-blockchain/**/data/
+no-blockchain/**/task/
+no-blockchain/**/logs/
