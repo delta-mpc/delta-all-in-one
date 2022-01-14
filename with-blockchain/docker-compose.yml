@@ -1,0 +1,143 @@
+version: "3.2"
+
+services:
+  connector1:
+    image: deltampc/delta-chain-connector:0.3.0-rc2
+    container_name: connector1
+    volumes:
+      - "./connector1:/app"
+    command: "run"
+    healthcheck:
+      test: "(echo >/dev/tcp/localhost/4500) &>/dev/null"
+      interval: 10s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+
+  connector2:
+    image: deltampc/delta-chain-connector:0.3.0-rc2
+    container_name: connector2
+    volumes:
+      - "./connector2:/app"
+    command: "run"
+    healthcheck:
+      test: "(echo >/dev/tcp/localhost/4500) &>/dev/null"
+      interval: 10s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+
+  connector3:
+    image: deltampc/delta-chain-connector:0.3.0-rc2
+    container_name: connector3
+    volumes:
+      - "./connector3:/app"
+    command: "run"
+    healthcheck:
+      test: "(echo >/dev/tcp/localhost/4500) &>/dev/null"
+      interval: 10s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+
+  node1-init:
+    image: deltampc/delta-node:0.3.0-rc3
+    container_name: node1-init
+    volumes:
+      - "./delta-node1:/app"
+    command: "init"
+  node1-data:
+    image: deltampc/delta-node:0.3.0-rc3
+    container_name: node1-data
+    volumes:
+      - "./delta-node1:/app"
+    command: "get-mnist"
+    depends_on:
+      node1-init:
+        condition: service_completed_successfully
+  node1:
+    image: deltampc/delta-node:0.3.0-rc3
+    container_name: node1
+    volumes:
+      - "./delta-node1:/app/"
+    depends_on:
+      node1-data:
+        condition: service_completed_successfully
+      connector1:
+        condition: service_healthy
+    ports:
+      - "6700:6700"
+    stop_grace_period: 30s
+
+  node2-init:
+    image: deltampc/delta-node:0.3.0-rc3
+    container_name: node2-init
+    volumes:
+      - "./delta-node2:/app/"
+    command: "init"
+  node2-data:
+    image: deltampc/delta-node:0.3.0-rc3
+    container_name: node2-data
+    volumes:
+      - "./delta-node2:/app/"
+    command: "get-mnist"
+    depends_on:
+      node2-init:
+        condition: service_completed_successfully
+  node2:
+    image: deltampc/delta-node:0.3.0-rc3
+    container_name: node2
+    volumes:
+      - "./delta-node2:/app/"
+    depends_on:
+      node2-data:
+        condition: service_completed_successfully
+      connector2:
+        condition: service_healthy
+    ports:
+      - "6701:6700"
+    stop_grace_period: 30s
+
+  node3-init:
+    image: deltampc/delta-node:0.3.0-rc3
+    container_name: node3-init
+    volumes:
+      - "./delta-node3:/app/"
+    command: "init"
+  node3-data:
+    image: deltampc/delta-node:0.3.0-rc3
+    container_name: node3-data
+    volumes:
+      - "./delta-node3:/app/"
+    command: "get-mnist"
+    depends_on:
+      node3-init:
+        condition: service_completed_successfully
+  node3:
+    image: deltampc/delta-node:0.3.0-rc3
+    container_name: node3
+    volumes:
+      - "./delta-node3:/app/"
+    depends_on:
+      node3-data:
+        condition: service_completed_successfully
+      connector3:
+        condition: service_healthy
+    ports:
+      - "6702:6700"
+    stop_grace_period: 30s
+
+  # dashboard-init:
+  #   image: deltampc/deltaboard:dev
+  #   container_name: dashboard-init
+  #   volumes: 
+  #     - "./deltaboard:/app/"
+  #   command: "init"
+  # dashboard:
+  #   image: deltampc/deltaboard:dev
+  #   container_name: dashboard
+  #   volumes: 
+  #     - "./deltaboard:/app/"
+  #   depends_on: 
+  #     - dashboard-init
+  #     - node1

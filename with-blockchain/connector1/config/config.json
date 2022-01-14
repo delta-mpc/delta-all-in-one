@@ -1,0 +1,32 @@
+{
+  "log": {
+    "level": "info"
+  },
+  "impl": "chain",
+  "host": "0.0.0.0",
+  "port": 4500,
+  "monkey": {
+    "db": {
+      "type": "sqlite",
+      "url": "db/chain.db"
+    }
+  },
+  "chain": {
+    "nodeAddress": "",
+    "privateKey": "",
+    "provider": "wss://node.delta.yuanben.org",
+    "gasPrice": 1,
+    "gasLimit": 4294967294,
+    "chainParam": {
+      "chainId": 42,
+      "name": "delta"
+    },
+
+    "identity": {
+      "contractAddress": "0x43A6feb218F0a1Bc3Ad9d9045ee6528349572E42"
+    },
+    "hfl": {
+      "contractAddress": "0x3830C82700B050dA87F1D1A60104Fb667227B686"
+    }
+  }
+}
