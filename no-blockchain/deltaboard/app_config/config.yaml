@@ -3,5 +3,5 @@ db:
   driver: ''
 node_address: "http://node1:6700"
 port: '8090'
+post_registry_url: /post-regist.html
 public_registration: true
-post_registry_url: "/post-regist.html"
