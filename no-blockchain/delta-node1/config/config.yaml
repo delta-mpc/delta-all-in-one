@@ -7,21 +7,23 @@ log:
   dir: "logs"
 
 # database connection string. here use sqlite for example, and the sqlite database file is db/delta.db
-db: "sqlite:///db/delta.db"
+db: "sqlite+aiosqlite:///db/delta.db"
 
-# configuration of blockchain node
+# configuration of connector
 chain_connector:
-  # blockchain node connection string, required
-  address: "connector:4500"
+  # connector host
+  host: "connector"
+  # connector port
+  port: 4500
 
-# node address which will be published on blockchain, and other node will connect this node use it
-node_address:
-  # host of node
-  host: "node1"
-  # port of node
-  port: 6800
+# configuration of node http server
+node:
+  # node name
+  name: "node1"
+  # node public URL
+  url: "http://node1:6700"
 
-# port of the node http server which provides api for deltaboard
+# port of node api server
 api_port: 6700
 
 # directory for intermediate data and results of task, here is in task for example
