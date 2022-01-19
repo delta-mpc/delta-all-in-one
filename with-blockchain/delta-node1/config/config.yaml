@@ -1,34 +1,33 @@
-
 ---
-# 日志配置
+# configuration of log
 log:  
-  # 日志级别
+  # log level
   level: "INFO"
-  # 日志输出的目录
+  # directory for log file
   dir: "logs"
 
-# 本地数据库地址，这里使用sqlite数据库，数据库文件保存在文件delta_node/db/delta.db中
+# database connection string. here use sqlite for example, and the sqlite database file is db/delta.db
 db: "sqlite+aiosqlite:///db/delta.db"
 
-# 区块链节点连接配置
+# configuration of connector
 chain_connector:
-  # 区块链连接器的地址
+  # connector host
   host: "connector1"
-  # 区块链连接器的端口
+  # connector port
   port: 4500
 
-# 本节点对外的公开地址，将会公开到区块链上，供其他Delta Node节点连接
+# configuration of node http server
 node:
-  # 本节点的名称
+  # node name
   name: "node1"
-  # 本节点的对外公开地址
+  # node public URL
   url: "http://node1:6700"
 
-# 本节点的http服务监听地址，用于Deltaboard的连接以及Delta Task的注册等
+# port of node api server
 api_port: 6700
 
-# 本节点的储存地址，用于保存任务执行的中间结果，本例中存放在delta_node/task文件夹下
+# directory for intermediate data and results of task, here is in task for example
 task_dir: "task"
 
-# 本节点的数据地址，用于存放节点提供的数据，本例中存放在delta_node/data文件夹下
+# directory for local dataset, here is in data for example
 data_dir: "data"
