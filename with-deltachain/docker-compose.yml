@@ -2,7 +2,7 @@ version: "3.2"
 
 services:
   connector1:
-    image: deltampc/delta-chain-connector:dev-c6cbd14
+    image: deltampc/delta-chain-connector:0.3.5
     container_name: connector1
     volumes:
       - "./connector1:/app"
@@ -15,7 +15,7 @@ services:
       start_period: 10s
 
   connector2:
-    image: deltampc/delta-chain-connector:dev-c6cbd14
+    image: deltampc/delta-chain-connector:0.3.5
     container_name: connector2
     volumes:
       - "./connector2:/app"
@@ -28,7 +28,7 @@ services:
       start_period: 10s
 
   connector3:
-    image: deltampc/delta-chain-connector:dev-c6cbd14
+    image: deltampc/delta-chain-connector:0.3.5
     container_name: connector3
     volumes:
       - "./connector3:/app"
@@ -41,13 +41,13 @@ services:
       start_period: 10s
 
   node1-init:
-    image: deltampc/delta-node:dev-bb8ec7e
+    image: deltampc/delta-node:0.3.5
     container_name: node1-init
     volumes:
       - "./delta-node1:/app"
     command: "init"
   node1-data:
-    image: deltampc/delta-node:dev-bb8ec7e
+    image: deltampc/delta-node:0.3.5
     container_name: node1-data
     volumes:
       - "./delta-node1:/app"
@@ -56,7 +56,7 @@ services:
       node1-init:
         condition: service_completed_successfully
   node1:
-    image: deltampc/delta-node:dev-bb8ec7e
+    image: deltampc/delta-node:0.3.5
     container_name: node1
     volumes:
       - "./delta-node1:/app/"
@@ -74,13 +74,13 @@ services:
       start_period: 10s
 
   node2-init:
-    image: deltampc/delta-node:dev-bb8ec7e
+    image: deltampc/delta-node:0.3.5
     container_name: node2-init
     volumes:
       - "./delta-node2:/app/"
     command: "init"
   node2-data:
-    image: deltampc/delta-node:dev-bb8ec7e
+    image: deltampc/delta-node:0.3.5
     container_name: node2-data
     volumes:
       - "./delta-node2:/app/"
@@ -89,7 +89,7 @@ services:
       node2-init:
         condition: service_completed_successfully
   node2:
-    image: deltampc/delta-node:dev-bb8ec7e
+    image: deltampc/delta-node:0.3.5
     container_name: node2
     volumes:
       - "./delta-node2:/app/"
@@ -107,13 +107,13 @@ services:
       start_period: 10s
 
   node3-init:
-    image: deltampc/delta-node:dev-bb8ec7e
+    image: deltampc/delta-node:0.3.5
     container_name: node3-init
     volumes:
       - "./delta-node3:/app/"
     command: "init"
   node3-data:
-    image: deltampc/delta-node:dev-bb8ec7e
+    image: deltampc/delta-node:0.3.5
     container_name: node3-data
     volumes:
       - "./delta-node3:/app/"
@@ -122,7 +122,7 @@ services:
       node3-init:
         condition: service_completed_successfully
   node3:
-    image: deltampc/delta-node:dev-bb8ec7e
+    image: deltampc/delta-node:0.3.5
     container_name: node3
     volumes:
       - "./delta-node3:/app/"
@@ -140,13 +140,13 @@ services:
       start_period: 10s
 
   dashboard-init:
-    image: deltampc/deltaboard:dev-aa13d38
+    image: deltampc/deltaboard:0.3.5
     container_name: dashboard-init
     volumes: 
       - "./deltaboard:/app/"
     command: "init"
   dashboard:
-    image: deltampc/deltaboard:dev-aa13d38
+    image: deltampc/deltaboard:0.3.5
     container_name: dashboard
     volumes: 
       - "./deltaboard:/app/"
