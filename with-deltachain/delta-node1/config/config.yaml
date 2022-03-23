@@ -15,6 +15,10 @@ chain_connector:
   host: "connector1"
   # connector port
   port: 4500
+  # heartbeat interval (seconds)
+  heartbeat: 30
+  # retry attemps
+  retry: 3
 
 # configuration of node http server
 node:
