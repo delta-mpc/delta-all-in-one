@@ -12,21 +12,21 @@
     }
   },
   "chain": {
-    "nodeAddress": "",
-    "privateKey": "",
-    "provider": "wss://apus.chain.deltampc.com",
-    "gasPrice": 1,
-    "gasLimit": 4294967294,
+    "nodeAddress": "0x459d81ac4fb5211248b512561643A1669Cd932c4",
+    "privateKey": "0x67c262ddec49eb3f689bab2d9a02990de09dbb496cf02b2de61564f5b3e4a760",
+    "provider": "ws://ganache:8545",
+    "gasPrice": 20000000000,
+    "gasLimit": 6721975,
     "chainParam": {
-      "chainId": 42,
-      "name": "delta"
+      "chainId": 1337,
+      "name": ""
     },
 
     "identity": {
-      "contractAddress": "0x43A6feb218F0a1Bc3Ad9d9045ee6528349572E42"
+      "contractAddress": "0xCe69c1DDCcD29a821bB4d3BdEEb3EdE9De9C7903"
     },
     "hfl": {
-      "contractAddress": "0x3830C82700B050dA87F1D1A60104Fb667227B686"
+      "contractAddress": "0x7864Bf464F9ecE0D3A95cA55e171D9060cf7336a"
     }
   }
 }
