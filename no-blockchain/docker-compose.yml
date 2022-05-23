@@ -25,13 +25,13 @@ services:
 
 
   node1-init:
-    image: deltampc/delta-node:0.5.2-rc1
+    image: deltampc/delta-node:0.5.2
     container_name: node1-init
     volumes:
       - "./delta-node1:/app"
     command: "init"
   node1-data1:
-    image: deltampc/delta-node:0.5.2-rc1
+    image: deltampc/delta-node:0.5.2
     container_name: node1-data1
     volumes:
       - "./delta-node1:/app"
@@ -40,7 +40,7 @@ services:
       node1-init:
         condition: service_completed_successfully
   node1-data2:
-    image: deltampc/delta-node:0.5.2-rc1
+    image: deltampc/delta-node:0.5.2
     container_name: node1-data2
     volumes:
       - "./delta-node1:/app"
@@ -49,7 +49,7 @@ services:
       node1-init:
         condition: service_completed_successfully
   node1:
-    image: deltampc/delta-node:0.5.2-rc1
+    image: deltampc/delta-node:0.5.2
     container_name: node1
     volumes:
       - "./delta-node1:/app/"
@@ -69,13 +69,13 @@ services:
       start_period: 10s
 
   node2-init:
-    image: deltampc/delta-node:0.5.2-rc1
+    image: deltampc/delta-node:0.5.2
     container_name: node2-init
     volumes:
       - "./delta-node2:/app/"
     command: "init"
   node2-data1:
-    image: deltampc/delta-node:0.5.2-rc1
+    image: deltampc/delta-node:0.5.2
     container_name: node2-data1
     volumes:
       - "./delta-node2:/app/"
@@ -84,7 +84,7 @@ services:
       node2-init:
         condition: service_completed_successfully
   node2-data2:
-    image: deltampc/delta-node:0.5.2-rc1
+    image: deltampc/delta-node:0.5.2
     container_name: node2-data2
     volumes:
       - "./delta-node2:/app/"
@@ -93,7 +93,7 @@ services:
       node2-init:
         condition: service_completed_successfully
   node2:
-    image: deltampc/delta-node:0.5.2-rc1
+    image: deltampc/delta-node:0.5.2
     container_name: node2
     volumes:
       - "./delta-node2:/app/"
@@ -113,13 +113,13 @@ services:
       start_period: 10s
 
   dashboard-init:
-    image: deltampc/deltaboard:0.5.2-rc1
+    image: deltampc/deltaboard:0.5.2
     container_name: dashboard-init
     volumes: 
       - "./deltaboard:/app/"
     command: "init"
   dashboard:
-    image: deltampc/deltaboard:0.5.2-rc1
+    image: deltampc/deltaboard:0.5.2
     container_name: dashboard
     volumes: 
       - "./deltaboard:/app/"
