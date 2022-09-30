@@ -14,7 +14,7 @@ services:
     stop_grace_period: 10s
 
   contract:
-    image: deltampc/delta-contracts:0.5.2
+    image: deltampc/delta-contracts:0.8.0
     container_name: contract
     volumes:
       - "./contract/truffle-config.js:/app/truffle-config.js"
@@ -23,7 +23,7 @@ services:
         condition: service_healthy
 
   connector1:
-    image: deltampc/delta-chain-connector:0.3.5
+    image: deltampc/delta-chain-connector:0.8.0
     container_name: connector1
     volumes:
       - "./connector1:/app"
@@ -41,7 +41,7 @@ services:
         condition: service_healthy
 
   connector2:
-    image: deltampc/delta-chain-connector:0.3.5
+    image: deltampc/delta-chain-connector:0.8.0
     container_name: connector2
     volumes:
       - "./connector2:/app"
@@ -59,7 +59,7 @@ services:
         condition: service_healthy
 
   connector3:
-    image: deltampc/delta-chain-connector:0.3.5
+    image: deltampc/delta-chain-connector:0.8.0
     container_name: connector3
     volumes:
       - "./connector3:/app"
@@ -76,14 +76,42 @@ services:
       ganache:
         condition: service_healthy
 
+  zk1:
+    image: deltampc/delta-zk:0.8.0
+    container_name: zk1
+    healthcheck:
+      test: "(echo >/dev/tcp/localhost/3400) &>/dev/null"
+      interval: 5s
+      timeout: 10s
+      retries: 3
+      start_period: 2s
+  zk2:
+    image: deltampc/delta-zk:0.8.0
+    container_name: zk2
+    healthcheck:
+      test: "(echo >/dev/tcp/localhost/3400) &>/dev/null"
+      interval: 5s
+      timeout: 10s
+      retries: 3
+      start_period: 2s
+  zk3:
+    image: deltampc/delta-zk:0.8.0
+    container_name: zk3
+    healthcheck:
+      test: "(echo >/dev/tcp/localhost/3400) &>/dev/null"
+      interval: 5s
+      timeout: 10s
+      retries: 3
+      start_period: 2s
+
   node1-init:
-    image: deltampc/delta-node:0.6.0
+    image: deltampc/delta-node:0.8.0
     container_name: node1-init
     volumes:
       - "./delta-node1:/app"
     command: "init"
   node1-data:
-    image: deltampc/delta-node:0.6.0
+    image: deltampc/delta-node:0.8.0
     container_name: node1-data
     volumes:
       - "./delta-node1:/app"
@@ -92,7 +120,7 @@ services:
       node1-init:
         condition: service_completed_successfully
   node1:
-    image: deltampc/delta-node:0.6.0
+    image: deltampc/delta-node:0.8.0
     container_name: node1
     volumes:
       - "./delta-node1:/app/"
@@ -100,6 +128,8 @@ services:
       node1-data:
         condition: service_completed_successfully
       connector1:
+        condition: service_healthy
+      zk1:
         condition: service_healthy
     stop_grace_period: 30s
     healthcheck:
@@ -110,13 +140,13 @@ services:
       start_period: 10s
 
   node2-init:
-    image: deltampc/delta-node:0.6.0
+    image: deltampc/delta-node:0.8.0
     container_name: node2-init
     volumes:
       - "./delta-node2:/app/"
     command: "init"
   node2-data:
-    image: deltampc/delta-node:0.6.0
+    image: deltampc/delta-node:0.8.0
     container_name: node2-data
     volumes:
       - "./delta-node2:/app/"
@@ -125,7 +155,7 @@ services:
       node2-init:
         condition: service_completed_successfully
   node2:
-    image: deltampc/delta-node:0.6.0
+    image: deltampc/delta-node:0.8.0
     container_name: node2
     volumes:
       - "./delta-node2:/app/"
@@ -133,6 +163,8 @@ services:
       node2-data:
         condition: service_completed_successfully
       connector2:
+        condition: service_healthy
+      zk2:
         condition: service_healthy
     stop_grace_period: 30s
     healthcheck:
@@ -143,13 +175,13 @@ services:
       start_period: 10s
 
   node3-init:
-    image: deltampc/delta-node:0.6.0
+    image: deltampc/delta-node:0.8.0
     container_name: node3-init
     volumes:
       - "./delta-node3:/app/"
     command: "init"
   node3-data:
-    image: deltampc/delta-node:0.6.0
+    image: deltampc/delta-node:0.8.0
     container_name: node3-data
     volumes:
       - "./delta-node3:/app/"
@@ -158,7 +190,7 @@ services:
       node3-init:
         condition: service_completed_successfully
   node3:
-    image: deltampc/delta-node:0.6.0
+    image: deltampc/delta-node:0.8.0
     container_name: node3
     volumes:
       - "./delta-node3:/app/"
@@ -166,6 +198,8 @@ services:
       node3-data:
         condition: service_completed_successfully
       connector3:
+        condition: service_healthy
+      zk3:
         condition: service_healthy
     stop_grace_period: 30s
     healthcheck:
@@ -176,13 +210,13 @@ services:
       start_period: 10s
 
   dashboard-init:
-    image: deltampc/deltaboard:0.6.0
+    image: deltampc/deltaboard:0.8.0
     container_name: dashboard-init
     volumes:
       - "./deltaboard:/app/"
     command: "init"
   dashboard:
-    image: deltampc/deltaboard:0.6.0
+    image: deltampc/deltaboard:0.8.0
     container_name: dashboard
     volumes:
       - "./deltaboard:/app/"

@@ -27,6 +27,13 @@ node:
   # node public URL
   url: "http://node2:6700"
 
+# configuration of delta zk
+zk:
+  # zk host
+  host: "zk2"
+  # zk port
+  port: 3400
+
 # port of node api server
 api_port: 6700
 

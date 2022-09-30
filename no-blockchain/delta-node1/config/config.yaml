@@ -2,7 +2,7 @@
 # configuration of log
 log:  
   # log level
-  level: "INFO"
+  level: "DEBUG"
   # directory for log file
   dir: "logs"
 
@@ -26,6 +26,13 @@ node:
   name: "node1"
   # node public URL
   url: "http://node1:6700"
+
+# configuration of delta zk
+zk:
+  # zk host
+  host: "zk1"
+  # zk port
+  port: 3400
 
 # port of node api server
 api_port: 6700
