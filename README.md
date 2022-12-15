@@ -1,4 +1,4 @@
-# Delta All-in-One Network Start Script
+# Delta Network All-in-One Start Script
 
 This repository contains the docker-compose start scripts and
 other necessary config files to start a minimum Delta network.
