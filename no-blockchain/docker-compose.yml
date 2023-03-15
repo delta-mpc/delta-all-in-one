@@ -113,13 +113,13 @@ services:
       start_period: 10s
 
   dashboard-init:
-    image: deltampc/deltaboard:0.8.1
+    image: deltampc/deltaboard:0.8.2-alpha3
     container_name: dashboard-init
     volumes: 
       - "./deltaboard:/app/"
     command: "init"
   dashboard:
-    image: deltampc/deltaboard:0.8.1
+    image: deltampc/deltaboard:0.8.2-alpha3
     container_name: dashboard
     volumes: 
       - "./deltaboard:/app/"
