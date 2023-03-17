@@ -60,6 +60,8 @@ services:
   node1:
     image: deltampc/delta-node:0.8.3
     container_name: node1
+    ports:
+      - "6700:6700"
     volumes:
       - "./delta-node1:/app/"
     depends_on:

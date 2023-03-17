@@ -5,6 +5,8 @@ services:
     image: trufflesuite/ganache-cli:v6.12.2
     container_name: ganache
     command: [ "-s", "delta" ]
+    ports:
+      - "8545:8545"
     healthcheck:
       test: "netstat -tuln | grep 8545 > /dev/null"
       interval: 5s
@@ -122,6 +124,8 @@ services:
   node1:
     image: deltampc/delta-node:0.8.3
     container_name: node1
+    ports:
+      - "6700:6700"
     volumes:
       - "./delta-node1:/app/"
     depends_on:
